@@ -1,0 +1,208 @@
+// ========================= [ Header styles ] =========================
+.header {
+  background-color: rgb(16, 32, 55);
+
+  &.fixed {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+  }
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  padding: 20px 0;
+}
+.logo {
+  a {
+    color: white;
+  }
+}
+
+// ========================== [ Menu styles ] ==========================
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+
+  // .menu__item
+  &__item {
+    display: flex;
+    position: relative;
+  }
+
+  // .menu__item-link
+  &__item-link {
+    color: white;
+    display: flex;
+    position: relative;
+    border-bottom: 1px solid transparent;
+    &:after {
+      position: absolute;
+      content: "";
+      left: 0;
+      bottom: -3px;
+      background: #131418;
+      height: 1px;
+      width: 100%;
+      transform: scale(0);
+      border-bottom: 1px solid #fff;
+      transition: 0.5s transform, 0.2s border-bottom ease-in-out;
+
+      // Comment if you need border animation
+      // display: none;
+    }
+    &:hover {
+      &:after {
+        transform: scale(1);
+      }
+    }
+  }
+
+  // Mobile menu styles
+  @media screen and (max-width: $burgerBreakpoint) {
+    position: fixed;
+    background: $burgerBackgroundColor;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    display: none;
+
+    &.active {
+      display: flex;
+      left: 0;
+      top: 0;
+      height: 100vh;
+      width: 100vw;
+      flex-direction: column;
+      pointer-events: all;
+      justify-content: center;
+      align-items: center;
+      z-index: 2;
+      animation: fade 0.1s linear;
+    }
+  }
+}
+
+// ========================= [ Burger styles ] =========================
+.burger {
+  display: none;
+  background: transparent;
+  z-index: 3;
+  @media screen and (max-width: $burgerBreakpoint) {
+    display: flex;
+    position: relative;
+    height: 20px;
+    width: 30px;
+
+    &.active {
+      &:before {
+        background: $burgerActiveColor;
+        transform: rotate(45deg);
+        transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
+        top: 8px;
+      }
+
+      &:after {
+        background: $burgerActiveColor;
+        transform: rotate(-45deg);
+        bottom: 10px;
+        transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
+      }
+
+      & span {
+        transform: scale(0);
+      }
+    }
+
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      height: 2px;
+      width: 100%;
+      background: $burgerColor;
+      transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
+    }
+
+    &:before {
+      top: 0;
+    }
+
+    &::after {
+      bottom: 0;
+    }
+
+    span {
+      position: absolute;
+      top: 9px;
+      right: 0;
+      width: 100%;
+      background: $burgerColor;
+      height: 2px;
+      transform: scale(1);
+      transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s all;
+    }
+  }
+}
+
+.menu-socials{
+  display: flex;
+  gap: .625rem;
+  a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    background-color: #fff;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: .3s all;
+    will-change: transform;
+    i{
+      color: #102037;
+    }
+    &:hover{
+      transform: scale(1.07);
+      background-color: #102037;
+      border: 1px solid #fff;
+      i{
+        color: #fff;
+      }
+      
+    }
+  }
+}
+
+.menu__btn{
+  width: 170px;
+  height: 35px;
+  padding: 5px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  background: linear-gradient(155deg, #fddcb3 0%, #fd948f 30%, #95a9c1 65%, #5796ba 100%);
+  animation: gradient 10s infinite linear;
+  background-size: 300%;
+  font-weight: 600;
+  cursor: pointer;
+  transition: .3s all;
+  will-change: transform;
+  &:hover{
+    // background: linear-gradient(35deg, #fddcb3 0%, #fd948f 30%, #95a9c1 65%, #5796ba 100%);
+    transform: scale(1.05);
+  }
+}
+
+ // #fddcb3
+  // #fd948f
+  // #95a9c1
+  // #5796ba
